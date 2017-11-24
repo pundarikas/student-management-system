@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sms.student.model.Student;
 import com.sms.student.service.StudentService;
+
 /**
  * 
  * @author pundarika
@@ -27,7 +28,10 @@ public class StudentController {
 	StudentService studentService;
 
 	/**
-	 * <p>Get all students.</p>
+	 * <p>
+	 * Get all students.
+	 * </p>
+	 * 
 	 * @return list of students
 	 */
 	@GetMapping("/")
@@ -36,7 +40,10 @@ public class StudentController {
 	}
 
 	/**
-	 * <p>Find one student with the given id.</p>
+	 * <p>
+	 * Find one student with the given id.
+	 * </p>
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -46,44 +53,52 @@ public class StudentController {
 	}
 
 	/**
-	 * <p>saves Student object in databse</p>
+	 * <p>
+	 * saves Student object in database
+	 * </p>
+	 * 
 	 * @param student
 	 * @return
 	 */
 	@PostMapping("/")
-	public Student save(@RequestBody Student student) {
-
+	public Student saveStudent(@RequestBody Student student) {
 		return studentService.save(student);
-
 	}
 
 	/**
-	 * <p>updates existing record in database with the given id</p>
+	 * <p>
+	 * updates existing record in database with the given id
+	 * </p>
+	 * 
 	 * @param student
 	 * @param id
 	 * @return
 	 */
 	@PutMapping("/{id}")
-	public Student update(@RequestBody Student student, @PathVariable("id") int id) {
-
-		return studentService.update(student, id);
-
+	public Student updateStudent(@RequestBody Student student, @PathVariable("id") int id) {
+		student.setId(id);
+		return studentService.update(student);
 	}
 
 	/**
-	 * <p>delete the record with given id</p>
+	 * <p>
+	 * delete the record with given id
+	 * </p>
+	 * 
 	 * @param id
 	 */
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") int id) {
+	public void deleteStudentById(@PathVariable("id") int id) {
 		studentService.delete(id);
 	}
 
 	/**
-	 * <p>delete all records</p>
+	 * <p>
+	 * delete all records
+	 * </p>
 	 */
 	@DeleteMapping("/")
-	public void deleteAll() {
+	public void deleteAllStudents() {
 		studentService.deleteAll();
 	}
 

@@ -15,18 +15,12 @@ public class StudentService {
 	StudentRepository studentRepository;
 	
 	public Student save(Student student) {
-		return this.studentRepository.save(student);
+		return studentRepository.save(student);
 		
 	}
 	
-	public Student update(Student student,int id) {
-		Student studentToUpdate=studentRepository.getOne(id);
-		studentToUpdate.setName(student.getName());
-		studentToUpdate.setAddress(student.getAddress());
-		studentToUpdate.setRoll(student.getRoll());
-		studentToUpdate.setSemester(student.getSemester());
-		studentToUpdate.setFaculty(student.getFaculty());
-		return this.studentRepository.save(studentToUpdate);
+	public Student update(Student student) {
+		return this.studentRepository.save(student);
 		
 	}
 
